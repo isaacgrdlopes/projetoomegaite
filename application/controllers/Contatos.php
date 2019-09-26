@@ -10,7 +10,7 @@ class Contatos extends CI_Controller
 
         $config = array(
             "base_url" => base_url('/index.php/contatos/p'),
-            "per_page" => 20,
+            "per_page" => 5,
             "num_links" => 5,
             "uri_segment" => 3,
             "total_rows" => $this->Contatos_Model->CountAll(),

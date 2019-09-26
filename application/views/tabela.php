@@ -32,7 +32,7 @@
                                                         "<a class='btn btn-success'<a href='contatos/alterar/" . $linha->id . " '>Alterar</a>" .
                                                         "</td>" .
                                                         "<td>" .
-                                                        "<a class='btn btn-danger'<a href='contatos/excluirContato/" . $linha->id . " '>Excluir</a>" .
+                                                        "<a class='btn btn-danger'<a href='/index.php/contatos/excluirContato/" . $linha->id . " '>Excluir</a>" .
                                                         "</td>" .
                                                         "</tr>";
                                                 }
