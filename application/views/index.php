@@ -83,7 +83,7 @@
           if(isset($pagina)){
           require($pagina);
           }
-          ?>
+          ?> 
         </div>
         <!-- /page content -->
 
