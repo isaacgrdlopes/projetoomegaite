@@ -3,7 +3,7 @@
 class Contatos extends CI_Controller
 {
 
-
+    // Paginação e Index
     public function index()
     {
         $this->load->model('Contatos_Model');
@@ -46,41 +46,35 @@ class Contatos extends CI_Controller
         $this->load->view('index', $data);
     }
 
-    /*  public function index() {
-            $this->load->model("Contatos_Model");
-            $contatos = $this->Contatos_Model->buscarTodos();
-
-            $pacote = array(
-                "contatos" => $contatos,
-                "pagina" => "tabela.php",
-            );
-
-                $this->load->view("index", $pacote);
-        }  */
-
+    // Cadastrar
     public function novo()
     {
-        $pacote = array(
-            "pagina" => "contatoNovo.php",
-        );
-        $this->load->view('index', $pacote);
+        $this->load->helper(array('form', 'url'));
+
+        $this->form_validation->set_rules('nome', 'nome', 'required');
+        $this->form_validation->set_rules('telefone', 'telefone', 'required');
+        $this->form_validation->set_rules('email', 'email', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $pacote = array(
+                "pagina" => "contatoNovo.php",
+            ); 
+            $this->load->view('index', $pacote);
+        } else {
+            $dados = array(
+                'nome' => $_POST['nome'],
+                'telefone' => $_POST['telefone'],
+                'email' => $_POST['email']
+            );
+    
+            $this->load->model("Contatos_Model");
+            $this->Contatos_Model->salvarNew($dados);
+
+            redirect('contatos');
+        }
     }
 
-    public function salvarNovo()
-    {
-        //var_dump($_POST);
-        $dados = array(
-            'nome' => $_POST['nome'],
-            'telefone' => $_POST['telefone'],
-            'email' => $_POST['email']
-        );
-
-        $this->load->model("Contatos_Model");
-        $this->Contatos_Model->salvarNew($dados);
-
-        redirect('contatos');
-    }
-    //Controller Contatos
+    // Alterar
     public function alterar($identificador)
     {
         $this->load->model("Contatos_Model");

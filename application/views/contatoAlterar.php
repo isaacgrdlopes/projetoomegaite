@@ -7,9 +7,10 @@
         <div class="x_content">
             <br>
             <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method="POST" action='<?php echo base_url() ?>index.php/contatos/salvarAlterar'>
+
                 <input type='hidden' name='id' value='<?php echo $contato[0]->id; ?>' />
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome: <span class="required">*</span>
+                    <label  class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <input type='text' name='nome' value=<?php echo $contato[0]->nome; ?> id="first-name" required="required" class="form-control col-md-7 col-xs-12 " data-parsley-id="5">
